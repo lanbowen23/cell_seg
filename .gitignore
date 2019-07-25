@@ -1,4 +1,7 @@
 .ipynb_checkpoints/
 .vscode/
-CELL
+DATA
 __pycache__/
+utils/__pycache__
+logs
+

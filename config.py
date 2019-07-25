@@ -67,23 +67,19 @@ config_vars["elastic_augmentations"] = 10
 # 02.01 OPTIMIZATION
 
 config_vars["learning_rate"] = 1e-4
-
 config_vars["epochs"] = 15
-
 config_vars["steps_per_epoch"] = 500
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # 02.02 BATCHES
 
 config_vars["batch_size"] = 10
-
 config_vars["val_batch_size"] = 10
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # 02.03 DATA NORMALIZATION
 
 config_vars["rescale_labels"] = True
-
 config_vars["crop_size"] = 256
 
 # ************ 03 ************ #
@@ -91,7 +87,6 @@ config_vars["crop_size"] = 256
 # **************************** #
 
 config_vars["cell_min_size"] = 16
-
 config_vars["boundary_boost_factor"] = 1
 
 # ************ 04 ************ #
