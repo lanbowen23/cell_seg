@@ -99,5 +99,5 @@ config_vars["object_dilation"] = 3
 # ******** FINAL SETUP ******* #
 # **************************** #
 
-config_vars = utils.dirtools.setup_working_directories(config_vars)
+# config_vars = utils.dirtools.setup_working_directories(config_vars)
 
