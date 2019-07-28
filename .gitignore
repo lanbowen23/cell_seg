@@ -1,11 +1,13 @@
 .ipynb_checkpoints/
 .vscode/
 
-DATA/*
-!DATA/DNA_FISH
-!DATA/prepare_dataset.ipynb
+# DATA/*
+# !DATA/DNA_FISH
+# !DATA/prepare_dataset.ipynb
 
 __pycache__/
 utils/__pycache__
 
 logs
+
+Notebooks/*
