@@ -92,7 +92,8 @@ def get_false_negatives(ground_truth, prediction, results, image_name, threshold
         np.array(false_negatives, dtype=np.int32)
     ])
 
-    results = pd.concat([results, pd.DataFrame(data=data.T, columns=["Area", "False_Negative"])], sort=True)
+    results = pd.concat([results, pd.DataFrame(data=data.T, 
+                    columns=["Area", "False_Negative"])], sort=True)
 
     return results
 
@@ -103,8 +104,22 @@ def get_splits_and_merges(ground_truth, prediction, results, image_name):
     IOU = intersection_over_union(ground_truth, prediction)
 
     matches = IOU > 0.1  # why here only use 0.1, 0.4 or 0.5 seems more reasonable
-    merges = np.sum(matches, axis=0) > 1
-    splits = np.sum(matches, axis=1) > 1
+    merges = np.sum(matches, axis=0) > 1  # pred label <-> 2 gt
+    splits = np.sum(matches, axis=1) > 1  # gt <-> 2 pred
     r = {"Image_Name": image_name, "Merges": np.sum(merges), "Splits": np.sum(splits)}
     results.loc[len(results) + 1] = r
     return results
+
+
+def num_analysis(raw_label, bd_label, results, image_name):
+    nb_cell = raw_label.max() - 1
+    nb_bg_pix = np.sum(bd_label[:,:,0])
+    nb_ce_pix = np.sum(bd_label[:,:,1])
+    nb_bd_pix = np.sum(bd_label[:,:,2])
+    ratio1 = np.round(np.array([nb_bg_pix, nb_ce_pix, nb_bd_pix]) / nb_bd_pix)
+    ratio2 = np.round(np.array([nb_bg_pix, nb_ce_pix]) / nb_ce_pix)
+    r = {"Image": image_name, "nb_cell": nb_cell, "ratio1": ratio1, "ratio2":ratio2}
+    results.loc[len(results)] = r
+    return results
+
+

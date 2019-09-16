@@ -7,7 +7,7 @@ DATA
 # !DATA/prepare_dataset.ipynb
 
 __pycache__/
-utils/__pycache__
+utils/__pycache__/
 
 logs
 
