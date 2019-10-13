@@ -12,7 +12,7 @@ The dataset is in folder `FISH`.
 
 ### Model
 
-![img/unet-structure.jpg](img/unet-structure.jpg)
+![imgs/unet-structure.jpg](imgs/unet-structure.jpg)
 
 ### Training
 
