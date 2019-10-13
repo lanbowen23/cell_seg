@@ -55,9 +55,9 @@ def setup_working_directories(config_vars):
 def read_data_partitions(config_vars, load_augmented=True):
     with open(config_vars["path_files_training"]) as f:
         training_files = f.read().splitlines()
-        if config_vars["max_training_images"] > 0:
-            random.shuffle(training_files)
-            training_files = training_files[0:config_vars["max_training_images"]]
+        # if config_vars["max_training_images"] > 0:
+        #     random.shuffle(training_files)
+        #     training_files = training_files[0:config_vars["max_training_images"]]
 
     with open(config_vars["path_files_validation"]) as f:
         validation_files = f.read().splitlines()

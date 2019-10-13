@@ -103,7 +103,7 @@ def get_splits_and_merges(ground_truth, prediction, results, image_name):
     # Compute IoU
     IOU = intersection_over_union(ground_truth, prediction)
 
-    matches = IOU > 0.1  # why here only use 0.1, 0.4 or 0.5 seems more reasonable
+    matches = IOU > 0.3  # why here only use 0.1, 0.4 or 0.5 seems more reasonable
     merges = np.sum(matches, axis=0) > 1  # pred label <-> 2 gt
     splits = np.sum(matches, axis=1) > 1  # gt <-> 2 pred
     r = {"Image_Name": image_name, "Merges": np.sum(merges), "Splits": np.sum(splits)}

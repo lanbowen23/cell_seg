@@ -9,6 +9,9 @@ debug = False
 
 def channel_precision(channel, name):
     def precision_func(y_true, y_pred):
+        """TP: pixel with more than 0.5 prob
+
+        """
         y_pred_tmp = K.cast(tf.equal(K.argmax(y_pred, axis=-1), channel), "float32")
         true_positives = K.sum(K.round(K.clip(y_true[:, :, :, channel] * y_pred_tmp, 0, 1)))
         predicted_positives = K.sum(K.round(K.clip(y_pred_tmp, 0, 1)))
@@ -24,8 +27,8 @@ def channel_recall(channel, name):
     def recall_func(y_true, y_pred):
         y_pred_tmp = K.cast(tf.equal(K.argmax(y_pred, axis=-1), channel), "float32")
         true_positives = K.sum(K.round(K.clip(y_true[:, :, :, channel] * y_pred_tmp, 0, 1)))
-        possible_positives = K.sum(K.round(K.clip(y_true[:, :, :, channel], 0, 1)))
-        recall = true_positives / (possible_positives + K.epsilon())
+        gt_positives = K.sum(K.round(K.clip(y_true[:, :, :, channel], 0, 1)))
+        recall = true_positives / (gt_positives + K.epsilon())
 
         return recall
 

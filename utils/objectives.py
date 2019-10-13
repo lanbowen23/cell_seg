@@ -2,10 +2,9 @@ import keras.metrics
 import tensorflow as tf
 
 
-def weighted_crossentropy(y_true, y_pred, weight=[1., 5., 0.]):
+def weighted_crossentropy(y_true, y_pred, weight=[1., 3., 30.]):
     """
     weight is for channel axis
-    can be [1., 5., 0.] [1., 5., 10.]
     """
 
     class_weights = tf.constant([[[weight]]]) 
@@ -15,4 +14,5 @@ def weighted_crossentropy(y_true, y_pred, weight=[1., 5., 0.]):
     weighted_losses = weights * unweighted_losses
     loss = tf.reduce_mean(weighted_losses)
     return loss
+
 
