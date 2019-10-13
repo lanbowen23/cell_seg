@@ -3,7 +3,7 @@
 
 DATA
 # DATA/*
-# !DATA/DNA_FISH
+# !DATA/FISH/
 # !DATA/prepare_dataset.ipynb
 
 __pycache__/
